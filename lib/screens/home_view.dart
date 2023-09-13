@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_ads_flutter/screens/home_viewmodel.dart';
+import 'package:google_ads_flutter/screens/interstitial_ads/interstitial_ads_view.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class HomeView extends StatelessWidget {
@@ -12,8 +13,18 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text("Banner Ads Example in Flutter"),
+      body: Column(
+        children: [
+          const Center(
+            child: Text("Banner Ads Example in Flutter"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Get.to(() => InterstitialAdsView());
+            },
+            child: const Text("Interstitial App Page"),
+          )
+        ],
       ),
       bottomNavigationBar: Obx(
         () => viewModel.isloaded.value
